@@ -1,0 +1,41 @@
+<div style="width: 100%; padding: 20px">
+     
+        <div style="display: inline-block; width: 100%; margin-top: 10px; margin-bottom: 10px">
+            <div style="float: left">
+                <p><B style="color: red">{{valueChange}}</B></p>
+            </div>
+            <div style="float: right; margin-left: 20px">
+                <label for="sideBarToggle">Show Side Bar&nbsp;</label>
+                <input type="checkbox" id="sideBarToggle" (change)="toggleSidebar($event)" style="margin-right: 5px" />
+                <br>
+                <label for="quickFilter">Quick Filter:&nbsp;</label>
+                <input (keyup)="onQuickFilterChanged($event)" type="text" id="quickFilter"
+                       placeholder="Type text to filter..." style="margin-right: 10px"/>
+            </div>
+        </div>
+    </div>
+    <ag-grid-angular style="width: 100%; padding: 20px; height: 450px;" class="ag-theme-alpine"
+                     [columnDefs]="columnDefs"
+                     [sideBar]="sideBar"
+                     [rowData]="rowData"
+                     [defaultColDef]="defaultColDef"
+                     [components]="components"
+                     [modules]="modules"
+                     [enableRangeSelection]="true"
+                     [suppressRowClickSelection]="true"
+                     [rowSelection]="'multiple'"
+                     [rowModelType]="rowModelType"
+                     [rowBuffer]="rowBuffer"
+                     [cacheBlockSize]="cacheBlockSize"
+                     [cacheOverflowSize]="cacheOverflowSize"
+                     [maxConcurrentDatasourceRequests]="maxConcurrentDatasourceRequests"
+                     [infiniteInitialRowCount]="infiniteInitialRowCount"
+                     [maxBlocksInCache]="maxBlocksInCache"
+                     (gridReady)="onGridReady($event)"
+                     (modelUpdated)="onModelUpdated()"
+                     (cellClicked)="onCellClicked($event)"
+                     (cellValueChanged)="onCellValueChanged($event)"
+                     (cellContextMenu)="onCellContextMenu($event)">
+    </ag-grid-angular>
+    <!-- [rowModelType]="rowModelType" -->
+
